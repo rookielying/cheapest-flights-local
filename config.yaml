@@ -133,7 +133,7 @@ notifiers:
 dashboard:
   output: docs/data/summary.json   # 聚合数据编译路径
   provider: github_pages           # 部署提供商
-  url: "https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>/" # 静态看板访问地址
+  url: "https://rookielying.github.io/cheapest-flights-local" # 静态看板访问地址
 
 # ==========================================
 # 7. 隐藏城市 (Skiplagged) 特价票监控模块

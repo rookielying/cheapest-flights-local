@@ -105,7 +105,7 @@
   "dashboard": {
     "output": "docs/data/summary.json",
     "provider": "github_pages",
-    "url": "https://alexli-77.github.io/cheapest-flights/"
+    "url": "https://rookielying.github.io/cheapest-flights-local"
   },
 
   "hidden_city": {
