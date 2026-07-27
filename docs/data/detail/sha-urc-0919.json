@@ -1,0 +1,20 @@
+{
+  "airlines_by_depart": {
+    "2026-09-19": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-27",
+        "flight_no": "",
+        "price": 1109,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    }
+  },
+  "generated_at": "2026-07-27T17:11:10+08:00",
+  "latest_fetch_date": "2026-07-27",
+  "route": "sha-urc-0919",
+  "sources": [
+    "fast_flights"
+  ]
+}

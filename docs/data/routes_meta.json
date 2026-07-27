@@ -1,59 +1,39 @@
 {
-  "generated_at": "2026-07-20T12:29:54+08:00",
+  "generated_at": "2026-07-27T17:11:10+08:00",
   "routes": [
     {
       "currency": "CNY",
-      "drop_alert_pct": null,
+      "drop_alert_pct": 0.1,
       "enabled": true,
-      "from": "YUL",
-      "from_city_cn": "蒙特利尔",
-      "from_name_cn": "蒙特利尔特鲁多国际机场",
-      "route_id": "yul-pek",
+      "from": "SHA",
+      "from_city_cn": "上海",
+      "from_name_cn": "上海虹桥国际机场",
+      "route_id": "sha-urc-0919",
       "sources": [
         "fast_flights",
-        "serpapi",
-        "ctrip_local"
+        "serpapi"
       ],
-      "target_price": null,
-      "to": "PEK",
-      "to_city_cn": "北京",
-      "to_name_cn": "北京首都国际机场"
+      "target_price": 1770.0,
+      "to": "URC",
+      "to_city_cn": "乌鲁木齐",
+      "to_name_cn": "乌鲁木齐地窝堡国际机场"
     },
     {
       "currency": "CNY",
-      "drop_alert_pct": null,
+      "drop_alert_pct": 0.1,
       "enabled": true,
-      "from": "YUL",
-      "from_city_cn": "蒙特利尔",
-      "from_name_cn": "蒙特利尔特鲁多国际机场",
-      "route_id": "yul-yvr",
+      "from": "URC",
+      "from_city_cn": "乌鲁木齐",
+      "from_name_cn": "乌鲁木齐地窝堡国际机场",
+      "route_id": "urc-sha-1003",
       "sources": [
         "fast_flights",
-        "serpapi",
-        "ctrip_local"
+        "serpapi"
       ],
-      "target_price": null,
-      "to": "YVR",
-      "to_city_cn": "温哥华",
-      "to_name_cn": "温哥华国际机场"
-    },
-    {
-      "currency": "CNY",
-      "drop_alert_pct": null,
-      "enabled": true,
-      "from": "YUL",
-      "from_city_cn": "蒙特利尔",
-      "from_name_cn": "蒙特利尔特鲁多国际机场",
-      "route_id": "yul-hkg",
-      "sources": [
-        "fast_flights",
-        "serpapi",
-        "ctrip_local"
-      ],
-      "target_price": null,
-      "to": "HKG",
-      "to_city_cn": "香港",
-      "to_name_cn": "香港国际机场"
+      "target_price": 1742.0,
+      "to": "SHA",
+      "to_city_cn": "上海",
+      "to_name_cn": "上海虹桥国际机场"
     }
   ],
   "timezone": "Asia/Shanghai"
