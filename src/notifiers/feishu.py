@@ -212,18 +212,38 @@ def _price_str(low: dict) -> str:
 
 def _flight_info_str(low: dict) -> str:
     """"Air China CA880 · 20:55" from a summary low record (fields optional)."""
+    """提取并格式化航班信息：(起飞时间-到达时间 航司航班号)"""
     if not low:
         return ""
+
+    # 兼容不同的字段命名 key   
     airline = str(low.get("airline") or "").strip()
     flight_no = str(low.get("flight_no") or "").strip()
-    dt = str(low.get("depart_time") or "").strip()
+    
+    
+    # 提取起飞与到达时间
+    dep_time = str(low.get("depart_time") or low.get("departure_time") or "").strip()
+    arr_time = str(low.get("arrival_time") or low.get("arr_time") or "").strip()
+    
+    # 拼接时间段 (如: 09:30-14:10)
+    time_str = ""
+    if dep_time and arr_time:
+        time_str = f"{dep_time}-{arr_time}"
+    elif dep_time:
+        time_str = dep_time
+
+    # 拼接航司与航班号 (如: 上航 FM9301)
+    carrier = " ".join(x for x in (airline, flight_no) if x)
+    
+    # 组合整体信息
     parts = []
     carrier = " ".join(x for x in (airline, flight_no) if x)
+    if time_str:
+        parts.append(time_str)
     if carrier:
         parts.append(carrier)
-    if dt:
-        parts.append(dt)
-    return " · ".join(parts)
+
+    return " ".join(parts)
 
 
 def _headline_lines(hl: dict) -> list:
@@ -672,15 +692,33 @@ def build_urgent_card(alert, dashboard_url: str = "", flight: dict = None) -> di
     route_label = (f"{_airport_label(origin)} → {_airport_label(dest)}"
                    if origin and dest else alert.route_id)
 
+
+    # 1.尝试直接从 alert 或 flight 中提取航班详细属性
+    airline = getattr(alert, "airline", "") or (flight or {}).get("airline", "")
+    flight_no = getattr(alert, "flight_no", "") or (flight or {}).get("flight_no", "")
+    dep_t = getattr(alert, "depart_time", "") or (flight or {}).get("depart_time", "")
+    arr_t = getattr(alert, "arrival_time", "") or (flight or {}).get("arrival_time", "")
+
+    # 拼装时间与航司
+    time_info = f"{dep_t}-{arr_t}" if (dep_t and arr_t) else dep_t
+    carrier_info = f"{airline} {flight_no}".strip()
+    flight_summary = f"{time_info} {carrier_info}".strip()
+
+    # 2. 如果上面没拼出来，退回调用 _flight_info_str()
+    if not flight_summary:
+        flight_summary = _flight_info_str(flight or {})
+    
+    
     detail = (
         f"**{alert.message}**\n\n"
         f"航线：{route_label}　出发日：{alert.depart_date or '-'}\n"
         f"今日最低：{_fmt(price)}　环比：{_pct_change(price, prev)}"
         f"　距目标价：{_gap_to_target(price, target)}"
     )
-    fi = _flight_info_str(flight or {})
-    if fi:
-        detail += f"\n航班：{fi}"
+    
+    # ✅ 正确把航班信息追加进 detail
+    if flight_summary:
+        detail += f"\n航班：{flight_summary}"
 
     # Button area: 立即查看 (dashboard) + 购票渠道 (Google Flights deep link).
     buttons = [{
