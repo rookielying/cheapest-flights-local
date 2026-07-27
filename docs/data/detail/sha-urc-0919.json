@@ -8,11 +8,19 @@
         "price": 1109,
         "source": "fast_flights",
         "stops": 0
+      },
+      "Spring": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-28",
+        "flight_no": "",
+        "price": 1109,
+        "source": "fast_flights",
+        "stops": 0
       }
     }
   },
-  "generated_at": "2026-07-27T17:11:10+08:00",
-  "latest_fetch_date": "2026-07-27",
+  "generated_at": "2026-07-28T00:13:58+08:00",
+  "latest_fetch_date": "2026-07-28",
   "route": "sha-urc-0919",
   "sources": [
     "fast_flights"
