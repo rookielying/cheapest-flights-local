@@ -1,0 +1,160 @@
+# ==============================================================
+# ======= config.yaml和src目录下config.py分别承担什么角色 ========
+"""
+1. 静态配置文件 (config.yaml / config.json)
+- 角色：业务数据源与系统参数配置（数据层） 。  
+- 职责：
+用户声明（改配置不改代码）：
+存放监控的航线（出发地、目的地、日期、目标价格）、通知渠道（飞书 Webhook、关键词）、数据源配额限制（SerpAPI 配额上限）等 。  
+零依赖回退：
+config.yaml 是推荐的人类可读配置；config.json 是其等价的镜像文件 。在无 PyYAML 第三方依赖的环境中，程序可以无缝自动回退读取 config.json 。 
+
+
+ 2. 配置管理器 (src/config.py)
+ - 角色：配置解析器与逻辑转换引擎（代码/逻辑层） 。  
+ - 职责：
+ 读取与环境兜底：
+ 尝试解析 config.yaml，若缺乏依赖或文件不存在则自动切换读取 config.json；同时安全优先提取环境变量（如 os.environ.get("FEISHU_WEBHOOK")） 。  
+ 业务逻辑计算与扩展：
+ 将静态的配置转译为具体的任务逻辑 。例如：将用户配置的 rolling-30d（滚动监控未来30天）动态计算转化为包含具体 30 个 YYYY-MM-DD 任务的执行列表 。  
+
+❓ 为什么不建议将它们合并成一个文件？
+# 解耦业务与逻辑：
+机票航线、目标价会频繁改动，但日期计算和环境变量提取逻辑几乎不动 。配置与代码分离符合现代化架构规范，改配置无需动核心代码 。
+# 保护敏感信息（安全性）：
+src/config.py 是要 commit 到 GitHub 仓库中的项目代码 。而包含敏感 Webhook 的配置文件可以通过 .gitignore 保护或搭配环境变量，避免私密信息外泄 。 
+# 跨语言/前端复用：
+config.json 可以直接被脚本（如 gen_routes_meta.py）或前端网页（GitHub Pages Dashboard）轻松 fetch() 抓取解析，而 Python 代码 src/config.py 是无法被前端 JavaScript 调用的 。  
+
+
+
+"""
+# ==========================================
+
+# ==========================================
+# 1. 全局与默认参数 (Global & Defaults)
+# ==========================================
+timezone: Asia/Shanghai            # 系统统一使用的时区，日志与通知统一为该时区时间
+defaults:
+  currency: CNY                    # 强行将抓取的机票价格统一换算/标准化为目标币种 (如 CNY, USD, CAD)
+  hl: zh-CN                        # 数据源使用的语言界面 (如 zh-CN, en)
+  request_interval_seconds: 5     # 每次爬虫请求之间的休眠间隔 (秒)，用于防风控
+  retry_backoffs_seconds:          # 请求失败时的退避等待重试时间 (秒)
+  - 15
+  - 40
+  max_retries: 2                   # 单个数据源最大允许重试次数
+
+# ==========================================
+# 2. 监控航线清单 (Monitored Routes)
+# ==========================================
+routes:
+# ------------------ 模板航线 1 (示例：固定/动态日期监控) ------------------
+- id: "sha-urc-0919"           # [必填] 航线任务唯一标识代码 (英文小写/矮折号，如 pek-tyo)
+  from: "SHA"              # [必填] 出发地机场/城市三字码 (如 PEK, BJS, YUL)
+  to: "URC"                  # [必填] 目的地机场/城市三字码 (如 NRT, TYO, HKG)
+  dates:
+    mode: fixed                  # [必填] 监控模式：rolling (动态滚动窗口) 或 fixed (固定具体日期)
+    # depart_in_days: 30             # [模式为 rolling 时填] 监控从今天起未来 N 天内的机票
+    fixed_dates:                 # [模式为 fixed 时启用] 指定监控具体日期列表
+      - "2026-09-19"
+    # - "2026-10-07"
+  airlines:
+    whitelist: []                  # 航司白名单：填写航司简称/代码，为空代表不过滤 (如 ["Air China"])
+    blacklist: ["春秋航空","Spring Airlines","9C"]                  # 航司黑名单：填不想乘坐的航司 (如 ["春秋航空"])
+  target_price: 1770.0               # 心理预期触发价 (数值，如 2500)；null 代表不设定绝对触发价
+  drop_alert_pct: 0.10             # 单日跌幅预警阈值 (如 0.15 代表单日跌超 15% 报警)；null 代表关闭
+  sources:                         # 启用的数据源及调用顺序
+  - fast_flights                   # 优先：免费 Google Flights 逆向源
+  - serpapi                        # 次选：SerpAPI 商业 API 兜底
+  # - ctrip_local                    # 备选：国内线/本地源
+  enabled: true                    # 是否启用本条航线监控 (true / false)
+  filters:
+    direct_only: true       # 要求直飞
+    require_baggage: true   # 要求包含免费行李额度
+    exclude_departure_hours: [0, 1, 2, 3, 4, 5, 6, 7, 8] # 不考虑 0-9 点起飞
+    exclude_arrival_hours: [23]                        # 不考虑 23-24 点落地
+
+# ------------------ 模板航线 2 (可复制追加更多航线) ------------------
+- id: "urc-sha-1003"
+  from: "URC" # 乌鲁木齐天山
+  to: "SHA"   # 上海虹桥
+  dates:
+    mode: fixed
+    #depart_in_days: 90
+    fixed_dates:                 # [模式为 fixed 时启用] 指定监控具体日期列表
+      - "2026-10-03"
+  airlines:
+    whitelist: []
+    blacklist: ["春秋航空","Spring Airlines","9C"]                  # 航司黑名单：填不想乘坐的航司 (如 ["春秋航空"])]
+  target_price: 1742.0
+  drop_alert_pct: 0.10
+  sources:
+  - fast_flights
+  - serpapi
+  enabled: true
+  filters:
+    direct_only: true       # 要求直飞
+    require_baggage: true   # 要求包含免费行李额度
+    exclude_departure_hours: [0, 1, 2, 3, 4, 5, 6, 7, 8] # 不考虑 0-9 点起飞
+    exclude_arrival_hours: [23]
+# ==========================================
+# 3. 交叉校验与额度控制 (Cross Check)
+# ==========================================
+cross_check:
+  source: serpapi                  # 用于交叉校验的数据源
+  daily_quota: 3                   # 每日二次校验配额 (控制付费/限额 API 消耗)
+  deviation_warn_pct: 20           # 两数据源偏差 > N% 时触发警告
+
+# ==========================================
+# 4. 告警规则与频率管控 (Alert Rules)
+# ==========================================
+alerts:
+  daily_digest: true               # 是否开启每日汇总“低价日报”
+  urgent_single_push: true         # 是否开启发现破阈值/特价时的“紧急单条闪信”
+  urgent_dedup_hours: 24           # 相同低价在 N 小时内不重复轰炸 (自动降级为日报)
+  max_urgent_per_day: 5            # 每日紧急闪信熔断上限 (超过后自动降级为普通日报)
+
+# ==========================================
+# 5. 通道推送设置 (Notifiers)
+# ==========================================
+notifiers:
+  feishu:
+    enabled: true                  # 是否启用飞书卡片推送
+    secret_env: FEISHU_WEBHOOK     # 读取的环境变量名 (对应 GitHub Secrets 中的名称)
+    show_segments: true            # 是否在卡片中展示转机与航段明细
+  telegram:
+    enabled: false
+  email:
+    enabled: false
+
+# ==========================================
+# 6. 前端看板配置 (Dashboard)
+# ==========================================
+dashboard:
+  output: docs/data/summary.json   # 聚合数据编译路径
+  provider: github_pages           # 部署提供商
+  url: "https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>/" # 静态看板访问地址
+
+# ==========================================
+# 7. 隐藏城市 (Skiplagged) 特价票监控模块
+# ==========================================
+hidden_city:
+  enabled: false                   # 是否开启“甩尾/隐藏城市”特价机票监控 (不用填 false)
+  origin: "ORIGIN_IATA"            # 实际出发城市/机场
+  onward_routes:                   # 名义延伸目的地列表 (如东南亚、日韩等城市)
+  - "ONWARD_IATA_1"
+  - "ONWARD_IATA_2"
+  chinese_hubs:                    # 中途转机出关的实际目的地 Hub 列表
+  - "HUB_IATA_1"
+  - "HUB_IATA_2"
+  dates:
+    mode: rolling
+    depart_in_days: 45
+  max_serpapi_per_run: 3           # 每次运行最大二次确认额度
+  min_saving_pct: 0                # 至少比直飞省钱 N% 才记录
+  max_dates_per_onward: 8          # 每个延伸目的地采样日期上限
+  max_direct_lookups: 6            # 直飞对比基线最大查询次数
+  confirm_only_suspected: true     # 仅对疑似目标航司花额度确认
+  cn_carriers:                     # 目标匹配航司名称列表
+  - "Airline Name 1"
+  - "Airline Name 2"

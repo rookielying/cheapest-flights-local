@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机票价格监控 · Flight Watch</title>
+<!--
+  数据流：本页 fetch ./data/summary.json（由 src.main 的 build_summary 生成）
+         + ./data/routes_meta.json（由 scripts/gen_routes_meta.py 生成）。
+  两文件都在站点根 docs/ 内，Pages 可直接访问。
+  图表引擎特性检测：若 docs/vendor/echarts.min.js 存在则用 ECharts，否则用
+  docs/vendor/charts.js（零依赖 SVG 回退）。首页 sparkline 一律用内联 SVG。
+-->
+<!-- 如已 vendor ECharts，取消下一行注释即可自动启用：
+<script src="./vendor/echarts.min.js"></script> -->
+<script src="./vendor/charts.js"></script>
+<script src="./airports.js"></script>
+<style>
+  :root {
+    --fw-bg: #f5f6f8;
+    --fw-card-bg: #ffffff;
+    --fw-text: #1f2329;
+    --fw-text-sub: #8a919f;
+    --fw-border: #e6e8eb;
+    --fw-accent: #3370ff;
+    --fw-good: #2ea121;
+    --fw-bad: #d83931;
+    --fw-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fw-bg: #17171a;
+      --fw-card-bg: #232326;
+      --fw-text: #e6e6e8;
+      --fw-text-sub: #9a9aa2;
+      --fw-border: #34343a;
+      --fw-accent: #4d7fff;
+      --fw-good: #43c463;
+      --fw-bad: #f16b62;
+      --fw-shadow: 0 1px 3px rgba(0,0,0,.4);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--fw-bg); color: var(--fw-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    padding: 20px 16px 8px; max-width: 1080px; margin: 0 auto;
+  }
+  header .topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  header h1 { font-size: 20px; margin: 0 0 4px; }
+  header .meta { color: var(--fw-text-sub); font-size: 12px; }
+  header a.nav-config {
+    flex: 0 0 auto; font-size: 13px; text-decoration: none; color: var(--fw-accent);
+    border: 1px solid var(--fw-border); border-radius: 8px; padding: 6px 12px; white-space: nowrap;
+  }
+  header a.nav-config:hover { background: color-mix(in srgb, var(--fw-accent) 12%, transparent); }
+  main { max-width: 1080px; margin: 0 auto; padding: 12px 16px 48px; }
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .card {
+    background: var(--fw-card-bg); border: 1px solid var(--fw-border);
+    border-radius: 12px; padding: 16px; box-shadow: var(--fw-shadow);
+    cursor: pointer; text-decoration: none; color: inherit;
+    transition: transform .12s ease, box-shadow .12s ease; display: block;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+  .card .route-title { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .card .route-cn { font-size: 13px; color: var(--fw-text); margin-top: 3px; }
+  .card .route-sub { color: var(--fw-text-sub); font-size: 12px; margin-top: 2px; }
+  .card .flight-info { color: var(--fw-text-sub); font-size: 12px; margin: 2px 0 0; }
+  .card .buy-row { margin-top: 10px; }
+  .card .buy-link {
+    display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600;
+    color: var(--fw-accent); text-decoration: none; border: 1px solid var(--fw-border);
+    border-radius: 8px; padding: 5px 10px;
+  }
+  .card .buy-link:hover { background: color-mix(in srgb, var(--fw-accent) 12%, transparent); }
+  .card .price-row { display: flex; align-items: baseline; gap: 8px; margin: 14px 0 6px; }
+  .card .price { font-size: 28px; font-weight: 700; }
+  .card .cur { color: var(--fw-text-sub); font-size: 13px; }
+  .chip {
+    font-size: 12px; padding: 2px 7px; border-radius: 999px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .chip.up { color: var(--fw-bad); background: color-mix(in srgb, var(--fw-bad) 12%, transparent); }
+  .chip.down { color: var(--fw-good); background: color-mix(in srgb, var(--fw-good) 14%, transparent); }
+  .chip.flat { color: var(--fw-text-sub); background: color-mix(in srgb, var(--fw-text-sub) 14%, transparent); }
+  .target { font-size: 12px; color: var(--fw-text-sub); display: flex; justify-content: space-between; margin-top: 8px; }
+  .target b.hit { color: var(--fw-good); }
+  .target b.miss { color: var(--fw-text); }
+  .spark { margin-top: 12px; height: 44px; }
+  .badge-disabled { font-size: 10px; color: var(--fw-text-sub); border: 1px solid var(--fw-border); border-radius: 4px; padding: 0 5px; }
+  .empty, .error { text-align: center; color: var(--fw-text-sub); padding: 60px 16px; }
+  .error { color: var(--fw-bad); }
+  /* 隐藏城市特价区块 */
+  .hc-section { margin-top: 32px; }
+  .hc-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .hc-head h2 { font-size: 17px; margin: 0; }
+  .hc-head .hc-sub { color: var(--fw-text-sub); font-size: 12px; }
+  .hc-risk {
+    margin: 8px 0 14px; font-size: 12px; color: var(--fw-bad); line-height: 1.6;
+    background: color-mix(in srgb, var(--fw-bad) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--fw-bad) 30%, var(--fw-border));
+    border-radius: 8px; padding: 8px 12px;
+  }
+  .hc-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .hc-card {
+    background: var(--fw-card-bg); border: 1px solid var(--fw-border);
+    border-radius: 12px; padding: 14px 16px; box-shadow: var(--fw-shadow);
+  }
+  .hc-card .hc-route { font-size: 15px; font-weight: 600; }
+  .hc-card .hc-hub { font-size: 13px; margin-top: 4px; }
+  .hc-card .hc-hub b { color: var(--fw-accent); }
+  .hc-card .hc-price { font-size: 24px; font-weight: 700; margin: 8px 0 2px; }
+  .hc-card .hc-save { font-size: 12px; color: var(--fw-good); font-weight: 600; }
+  .hc-card .hc-meta { font-size: 12px; color: var(--fw-text-sub); margin-top: 4px; }
+  .hc-card .hc-flag {
+    display: inline-block; font-size: 11px; font-weight: 600; color: var(--fw-bad);
+    border: 1px solid color-mix(in srgb, var(--fw-bad) 40%, var(--fw-border));
+    border-radius: 4px; padding: 0 5px; margin-left: 6px;
+  }
+  .hc-card .hc-buy { display: inline-flex; margin-top: 10px; font-size: 12px; font-weight: 600;
+    color: var(--fw-accent); text-decoration: none; border: 1px solid var(--fw-border);
+    border-radius: 8px; padding: 5px 10px; }
+  footer { text-align: center; color: var(--fw-text-sub); font-size: 11px; padding: 24px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div>
+      <h1>机票价格监控</h1>
+      <div class="meta" id="meta">加载中…</div>
+    </div>
+    <a class="nav-config" href="settings.html">⚙️ 配置</a>
+  </div>
+</header>
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">还没有可展示的航线数据。运行一次抓取后即可看到卡片。</div>
+
+  <section class="hc-section" id="hcSection" style="display:none">
+    <div class="hc-head">
+      <h2>🧳 隐藏城市特价</h2>
+      <span class="hc-sub" id="hcSub"></span>
+    </div>
+    <div class="hc-risk" id="hcRisk">
+      隐藏城市票：仅飞第一段、勿托运行李、勿用于往返程、违反航司条款，风险自负。
+    </div>
+    <div class="hc-grid" id="hcGrid"></div>
+  </section>
+</main>
+<footer>Flight Watch · 数据每日自动更新 · GitHub Pages 静态托管</footer>
+
+<script>
+"use strict";
+
+function fmtMoney(v, cur) {
+  if (v == null) return "—";
+  return (cur === "CNY" || !cur ? "¥" : "") + Number(v).toLocaleString() + (cur && cur !== "CNY" ? " " + cur : "");
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+// Google Flights 深链（购票渠道）：单程搜索。
+function gflightsUrl(from, to, dd) {
+  from = String(from || "").toUpperCase(); to = String(to || "").toUpperCase();
+  if (!from || !to) return "";
+  var q = "Flights from " + from + " to " + to + (dd ? " on " + dd : "") + " one way";
+  return "https://www.google.com/travel/flights?q=" + encodeURIComponent(q);
+}
+
+// "Air China CA880 · 08:30" from a summary latest-low record (fields optional).
+function flightInfoStr(low) {
+  if (!low) return "";
+  var carrier = [low.airline, low.flight_no].filter(Boolean).join(" ");
+  return [carrier, low.depart_time || ""].filter(Boolean).join(" · ");
+}
+
+// 机场中文名 + 三字码，如 "北京(PEK)"；查不到时退回三字码。
+function airportLabelCN(code) {
+  code = String(code || "").toUpperCase();
+  var list = (window.AIRPORTS || []);
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].iata === code) {
+      var name = list[i].city_cn || "";
+      return name ? name + "(" + code + ")" : code;
+    }
+  }
+  return code;
+}
+
+// SerpAPI 增强详情（summary headline）-> 两行：航班号/时刻/中转 + 行李/中转托运说明。
+function headlineLines(hl) {
+  if (!hl) return [];
+  var carrier = [hl.airline, hl.flight_no].filter(Boolean).join(" ");
+  var stops = Number(hl.stops || 0);
+  var stopLabel;
+  if (stops <= 0) {
+    stopLabel = "直飞";
+  } else {
+    var los = (hl.layover_airports || []).filter(Boolean).map(airportLabelCN);
+    stopLabel = los.length ? ("中转 " + los.join("、")) : ("中转" + stops + "次");
+  }
+  var seg = [carrier, stopLabel].filter(Boolean);
+  if (hl.depart_time) seg.push(hl.depart_time + " 起飞");
+  var line1 = seg.join(" · ");
+  var bag = String(hl.baggage_note || "").trim() || "见链接确认";
+  var line2 = stops > 0
+    ? ("🧳 行李：" + bag + " · 单一订单行李直挂终点，中转无需重新托运")
+    : ("🧳 行李：" + bag);
+  var out = [];
+  if (line1) out.push(line1);
+  out.push(line2);
+  return out;
+}
+
+// ---- 逐段行程（multi-segment）：与 Python format_itinerary 一致的展示 ----
+function pad2(n) { return (n < 10 ? "0" : "") + n; }
+
+function fmtDur(mins) {
+  var m = parseInt(mins, 10);
+  if (isNaN(m) || m <= 0) return "";
+  var h = Math.floor(m / 60), mm = m % 60;
+  if (h && mm) return h + "h" + mm + "m";
+  if (h) return h + "h";
+  return mm + "m";
+}
+
+// "2026-08-06 20:55" -> {d:Date, hm:"20:55", mo:8, da:6}；仅 HH:MM -> {d:null, hm}。
+function parseFullDt(raw) {
+  var s = String(raw == null ? "" : raw).trim();
+  if (!s) return { d: null, hm: "" };
+  var m = s.match(/(\d{4})-(\d{1,2})-(\d{1,2})[ T](\d{1,2}):(\d{2})/);
+  if (m) {
+    var mo = parseInt(m[2], 10), da = parseInt(m[3], 10),
+        hh = parseInt(m[4], 10), mi = parseInt(m[5], 10);
+    return { d: new Date(parseInt(m[1], 10), mo - 1, da), hm: pad2(hh) + ":" + pad2(mi),
+             mo: mo, da: da };
+  }
+  var hm2 = s.match(/(\d{1,2}):(\d{2})/);
+  if (hm2) return { d: null, hm: pad2(parseInt(hm2[1], 10)) + ":" + pad2(parseInt(hm2[2], 10)) };
+  return { d: null, hm: "" };
+}
+
+function flightNoCompact(no) { return String(no == null ? "" : no).replace(/\s+/g, ""); }
+
+function layoverFor(layovers, idx, airport) {
+  if (idx >= 0 && idx < layovers.length && layovers[idx]) return layovers[idx];
+  var code = String(airport || "").toUpperCase();
+  for (var i = 0; i < layovers.length; i++) {
+    if (layovers[i] && String(layovers[i].airport || "").toUpperCase() === code) return layovers[i];
+  }
+  return null;
+}
+
+// 段号 keycap emoji（1..9）；第 10 段起退回文字「第N段」。与 Python _SEG_EMOJI 一致。
+var SEG_EMOJI = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+function segMarker(i) { return i < SEG_EMOJI.length ? SEG_EMOJI[i] : ("第" + (i + 1) + "段"); }
+// 起降行缩进：两个全角空格（U+3000），与 Python _ITIN_INDENT 一致，避免行首半角空格被折叠。
+var ITIN_INDENT = "　　";
+
+// 逐段航段 + 段间中转等待 -> 展示行数组（按用户模板；机场中文名；前 4 段）。
+// 每段 3 行：段号行 + 起飞行 + 到达行；出发行日期前缀仅当出发日 != 上次打印日期
+// （last_printed_date 初始为首段出发日），到达行用 +N 跨日标记。与 Python format_itinerary 对齐。
+function formatItinerary(segments, layovers, maxSegs) {
+  maxSegs = maxSegs || 4;
+  var segs = (segments || []).filter(function (s) { return s && typeof s === "object"; });
+  if (!segs.length) return [];
+  layovers = (layovers || []).filter(function (l) { return l && typeof l === "object"; });
+  var n = segs.length, shown = segs.slice(0, maxSegs), lines = [];
+  var firstDep = parseFullDt(shown[0].from_time);
+  var lastPrinted = firstDep.d || null;  // Date or null
+  shown.forEach(function (seg, i) {
+    var fno = flightNoCompact(seg.flight_no);
+    var dep = parseFullDt(seg.from_time), arr = parseFullDt(seg.to_time);
+    var fromLabel = airportLabelCN(seg.from), toLabel = airportLabelCN(seg.to);
+
+    // 段号行：段号 + 航班号 + 飞行时长。
+    var head = segMarker(i);
+    if (fno) head += " " + fno;
+    var dur = fmtDur(seg.duration_min);
+    if (dur) head += " · 飞行" + dur;
+    lines.push(head);
+
+    // 出发行：日期前缀仅当出发日 != 上次打印过的日期；只有出发行更新 lastPrinted。
+    var depPrefix = "";
+    if (dep.d && (!lastPrinted || dep.d.getTime() !== lastPrinted.getTime())) {
+      depPrefix = pad2(dep.mo) + "-" + pad2(dep.da) + " ";
+    }
+    if (dep.d) lastPrinted = dep.d;
+    var depTime = (depPrefix + dep.hm).replace(/\s+$/, "");
+    var depBody = [depTime, fromLabel].filter(Boolean).join(" ");
+    if (depBody) lines.push(ITIN_INDENT + depBody);
+
+    // 到达行：+N 跨日标记（相对本段出发日），不带 MM-DD 前缀。
+    var arrDisp = arr.hm;
+    if (arr.d && dep.d && arr.hm) {
+      var gap = Math.round((arr.d - dep.d) / 86400000);
+      if (gap > 0) arrDisp = arr.hm + "+" + gap;
+    }
+    var arrBody = [arrDisp, toLabel].filter(Boolean).join(" ");
+    if (arrBody) lines.push(ITIN_INDENT + arrBody);
+
+    if (i < shown.length - 1) {
+      var lo = layoverFor(layovers, i, seg.to);
+      if (lo) {
+        var loLine = "⏱ 中转 " + airportLabelCN(lo.airport);
+        var wait = fmtDur(lo.wait_min);
+        if (wait) loLine += " 等待 " + wait;
+        lines.push(loLine);
+      }
+    }
+  });
+  if (n > maxSegs) lines.push("… 还有 " + (n - maxSegs) + " 段");
+  return lines;
+}
+
+function baggageLine(hl) {
+  var bag = String((hl && hl.baggage_note) || "").trim() || "见链接确认";
+  return Number((hl && hl.stops) || 0) > 0
+    ? ("🧳 行李：" + bag + " · 单一订单行李直挂终点，中转无需重新托运")
+    : ("🧳 行李：" + bag);
+}
+
+// 每个 route 的「每日最低价」序列：跨 depart_dates，对每个 fetch_date 取最小 latest?
+// series 里每个 depart_date 已是「该 fetch_date 的最低价」。跨 depart_date 再取 min。
+function dailyMinSeries(routeObj) {
+  var byDate = {};
+  var dds = routeObj.depart_dates || {};
+  Object.keys(dds).forEach(function (dd) {
+    (dds[dd].series || []).forEach(function (pt) {
+      var d = pt.fetch_date, p = pt.price;
+      if (byDate[d] == null || p < byDate[d]) byDate[d] = p;
+    });
+  });
+  return Object.keys(byDate).sort().map(function (d) { return { fetch_date: d, price: byDate[d] }; });
+}
+
+// 最近抓取日的跨-depart_date 最低 latest.price（并带出对应出发日与航班明细）。
+function latestLowest(routeObj) {
+  var best = null, cur = "CNY", bestDD = "", bestLow = null;
+  var dds = routeObj.depart_dates || {};
+  Object.keys(dds).forEach(function (dd) {
+    var l = dds[dd].latest;
+    if (l && l.price != null && (best == null || l.price < best)) {
+      best = l.price; cur = l.currency || cur; bestDD = dd; bestLow = l;
+    }
+  });
+  return { price: best, currency: cur, dd: bestDD, low: bestLow };
+}
+
+function sparkline(series, w, h) {
+  if (!series.length) return "";
+  var vals = series.map(function (s) { return s.price; });
+  var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+  var pad = 4, n = series.length;
+  function X(i) { return pad + (n <= 1 ? (w - 2 * pad) / 2 : (i / (n - 1)) * (w - 2 * pad)); }
+  function Y(v) { return h - pad - (max === min ? (h - 2 * pad) / 2 : ((v - min) / (max - min)) * (h - 2 * pad)); }
+  var d = "M" + series.map(function (s, i) { return X(i) + " " + Y(s.price); }).join(" L");
+  var area = d + " L" + X(n - 1) + " " + (h - pad) + " L" + X(0) + " " + (h - pad) + " Z";
+  var last = series[n - 1];
+  var trendUp = n >= 2 && last.price > series[n - 2].price;
+  var color = trendUp ? "var(--fw-bad)" : "var(--fw-good)";
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" height="' + h + '" preserveAspectRatio="none">' +
+    '<path d="' + area + '" fill="' + color + '" opacity="0.12"></path>' +
+    '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>' +
+    '<circle cx="' + X(n - 1) + '" cy="' + Y(last.price) + '" r="2.6" fill="' + color + '"></circle>' +
+    '</svg>';
+}
+
+function arrowChip(series) {
+  if (series.length < 2) return '<span class="chip flat">— 无环比</span>';
+  var a = series[series.length - 1].price, b = series[series.length - 2].price;
+  var diff = a - b;
+  var pct = b ? (diff / b * 100) : 0;
+  if (diff === 0) return '<span class="chip flat">— 持平</span>';
+  var cls = diff > 0 ? "up" : "down";
+  var ar = diff > 0 ? "▲" : "▼";
+  return '<span class="chip ' + cls + '">' + ar + " " + Math.abs(pct).toFixed(1) + "%</span>";
+}
+
+function render(summary, meta) {
+  var metaMap = {};
+  (meta.routes || []).forEach(function (r) { metaMap[r.route_id] = r; });
+  document.getElementById("meta").textContent =
+    "更新于 " + (summary.generated_at || "?") +
+    (summary.meta && summary.meta.serpapi_remaining_quota != null
+      ? " · SerpAPI 剩余额度 " + summary.meta.serpapi_remaining_quota : "");
+
+  var routes = summary.routes || {};
+  var grid = document.getElementById("grid");
+
+  // 以 routes_meta.json 的航线为准（双保险：summary 也已按 config 过滤旧航线）。
+  // meta 缺失时退回 summary 里的航线键。
+  var ids = (meta.routes || []).map(function (r) { return r.route_id; });
+  if (!ids.length) { ids = Object.keys(routes).sort(); }
+  if (!ids.length) { document.getElementById("empty").style.display = "block"; return; }
+
+  ids.forEach(function (rid) {
+    var robj = routes[rid] || { depart_dates: {} };
+    var m = metaMap[rid] || {};
+    var ll = latestLowest(robj);
+    var series = dailyMinSeries(robj);
+    var target = m.target_price;
+    var hit = target != null && ll.price != null && ll.price <= target;
+    var diff = (target != null && ll.price != null) ? (ll.price - target) : null;
+
+    var fromCN = m.from_city_cn || "", toCN = m.to_city_cn || "";
+    var cnLine = (fromCN || toCN)
+      ? '<div class="route-cn">' + esc(fromCN || m.from || "?") + ' → ' + esc(toCN || m.to || "?") + '</div>'
+      : '';
+    var flight = flightInfoStr(ll.low);
+    // 增强详情：仅当 headline 对应最低价出发日时展示（航班号/精确时刻/中转/行李）。
+    var hl = (robj.headline && robj.headline.depart_date === ll.dd) ? robj.headline : null;
+    var hlLines;
+    if (hl && (hl.segments || []).length) {
+      hlLines = formatItinerary(hl.segments, hl.layovers || []);
+      hlLines.push(baggageLine(hl));  // 逐段行程 + 行李/中转托运说明
+    } else {
+      hlLines = headlineLines(hl);  // 回退单行摘要
+    }
+    var hlHtml = hlLines.map(function (t) {
+      return '<div class="flight-info">' + esc(t) + '</div>';
+    }).join("");
+    var buyUrl = gflightsUrl(m.from, m.to, ll.dd);
+
+    var card = document.createElement("div");
+    card.className = "card";
+    card.setAttribute("role", "link");
+    card.tabIndex = 0;
+    var go = function () { location.href = "route.html?route=" + encodeURIComponent(rid); };
+    card.onclick = go;
+    card.onkeydown = function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+    card.innerHTML =
+      '<div class="route-title">' +
+        esc(m.from || "?") + ' <span style="color:var(--fw-text-sub)">→</span> ' + esc(m.to || "?") +
+        (m.enabled === false ? ' <span class="badge-disabled">未启用</span>' : '') +
+      '</div>' +
+      cnLine +
+      '<div class="route-sub">' + esc(rid) + '</div>' +
+      '<div class="price-row">' +
+        '<span class="price">' + fmtMoney(ll.price, ll.currency) + '</span>' +
+        arrowChip(series) +
+      '</div>' +
+      (flight ? '<div class="flight-info">' + esc(flight) + '</div>' : '') +
+      hlHtml +
+      '<div class="target">' +
+        '<span>目标价 ' + (target != null ? fmtMoney(target, ll.currency) : "—") + '</span>' +
+        (diff != null
+          ? '<span>' + (hit
+              ? '<b class="hit">已达标 省 ' + fmtMoney(-diff, ll.currency) + '</b>'
+              : '<b class="miss">还差 ' + fmtMoney(diff, ll.currency) + '</b>') + '</span>'
+          : '<span></span>') +
+      '</div>' +
+      '<div class="spark">' + sparkline(series, 260, 44) + '</div>' +
+      (buyUrl
+        ? '<div class="buy-row"><a class="buy-link" href="' + esc(buyUrl) + '" target="_blank" ' +
+          'rel="noopener" onclick="event.stopPropagation()">🛒 查看购票渠道</a></div>'
+        : '');
+    grid.appendChild(card);
+  });
+}
+
+// 隐藏城市特价：城市中文名（若 airports 表可用则用它，否则退回三字码）。
+function cityLabel(code) {
+  code = String(code || "").toUpperCase();
+  var list = (window.AIRPORTS || []);
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].iata === code) return (list[i].city_cn || "") + code;
+  }
+  return code;
+}
+
+function renderHiddenCity(data) {
+  var hits = (data && data.hits) || [];
+  var section = document.getElementById("hcSection");
+  if (!hits.length) { section.style.display = "none"; return; }
+  section.style.display = "block";
+  var st = (data && data.stats) || {};
+  var nConf = hits.filter(function (h) { return !h.suspected; }).length;
+  document.getElementById("hcSub").textContent =
+    "共 " + hits.length + " 条（确认 " + nConf + " · 疑似 " + (hits.length - nConf) + "）" +
+    (data.generated_at ? " · 更新于 " + data.generated_at : "");
+  var grid = document.getElementById("hcGrid");
+  grid.innerHTML = "";
+  hits.slice(0, 24).forEach(function (h) {
+    var card = el2("div", "hc-card");
+    var layoverCity = (h.layover_city_cn || "") || h.layover_cn;
+    var buyUrl = gflightsUrl(h.origin, h.onward_dest, h.depart_date);
+    var carrier = [h.airline, h.flight_no].filter(Boolean).join(" ");
+    var metaHtml;
+    if ((h.segments || []).length) {
+      // 逐段行程：出发日 + 各段时刻/航班/机场 + 段间中转等待。
+      var itLines = (h.depart_date ? ["出发 " + h.depart_date] : [])
+        .concat(formatItinerary(h.segments, h.layovers || []));
+      metaHtml = itLines.map(function (t) { return '<div class="hc-meta">' + esc(t) + '</div>'; }).join("");
+    } else {
+      var meta = [h.depart_date ? "出发 " + h.depart_date : "", carrier,
+                  h.depart_time || ""].filter(Boolean).join(" · ");
+      metaHtml = meta ? '<div class="hc-meta">' + esc(meta) + '</div>' : '';
+    }
+    card.innerHTML =
+      '<div class="hc-route">' + esc(cityLabel(h.origin)) + ' → ' + esc(cityLabel(h.onward_dest)) +
+        (h.suspected ? '<span class="hc-flag">⚠️未确认中转站</span>' : '') + '</div>' +
+      '<div class="hc-hub">中转 <b>' + esc(layoverCity) + '(' + esc(h.layover_cn) + ')</b></div>' +
+      '<div class="hc-price">' + fmtMoney(h.price_cny, "CNY") + '</div>' +
+      (h.saving_pct != null && h.direct_price_cny != null
+        ? '<div class="hc-save">比直飞' + esc(layoverCity) + ' ' + fmtMoney(h.direct_price_cny, "CNY") +
+          ' 省 ' + h.saving_pct + '%</div>' : '') +
+      metaHtml +
+      (buyUrl ? '<a class="hc-buy" href="' + esc(buyUrl) + '" target="_blank" rel="noopener">🛒 Google Flights 全程</a>' : '');
+    grid.appendChild(card);
+  });
+}
+function el2(t, c) { var e = document.createElement(t); if (c) e.className = c; return e; }
+
+fetch("./data/hidden_city.json")
+  .then(function (r) { return r.ok ? r.json() : null; })
+  .then(function (d) { if (d) renderHiddenCity(d); })
+  .catch(function () { /* 无隐藏城市数据时静默 */ });
+
+Promise.all([
+  fetch("./data/summary.json").then(function (r) { if (!r.ok) throw new Error("summary " + r.status); return r.json(); }),
+  fetch("./data/routes_meta.json").then(function (r) { return r.ok ? r.json() : { routes: [] }; }).catch(function () { return { routes: [] }; })
+]).then(function (res) {
+  render(res[0], res[1]);
+}).catch(function (e) {
+  document.getElementById("meta").textContent = "";
+  var main = document.querySelector("main");
+  main.innerHTML = '<div class="error">加载数据失败：' + e.message +
+    '<br>请确认 docs/data/summary.json 已生成（本地预览需通过 HTTP 服务器打开，而非 file://）。</div>';
+});
+</script>
+</body>
+</html>

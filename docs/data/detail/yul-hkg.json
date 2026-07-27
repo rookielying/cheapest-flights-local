@@ -1,0 +1,1811 @@
+{
+  "airlines_by_depart": {
+    "2026-07-15": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 3139,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-07-16": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6358,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6401,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-17": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6905,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6862,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "WestJet, Philippine Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6178,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-07-18": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6862,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6905,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-19": {
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6415,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Turkish Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 7085,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-20": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6228,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 7632,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6530,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-21": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6415,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6451,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-22": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6494,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "WestJet, Philippine Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 3168,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-07-23": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5926,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6415,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6451,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-24": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6905,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-25": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6890,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, ANA": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6444,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6955,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-26": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 7027,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6847,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-27": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5926,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, ANA": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5933,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6545,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6134,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-28": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-29": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5926,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, ANA": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5933,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6494,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-30": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5933,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, ANA": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5926,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6581,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6134,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-07-31": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6005,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5285,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-01": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4946,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6638,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-02": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4824,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-03": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 4918,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-04": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-05": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-06": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-07": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4889,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 4990,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, ANA": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4824,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-08-08": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5479,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-09": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-10": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 4918,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-11": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 4838,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-12": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4824,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-13": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4982,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-14": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5998,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5040,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Cathay Pacific": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6602,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6019,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-08-15": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-16": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4968,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Cathay Pacific": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5450,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-08-17": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-18": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 4918,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-19": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4824,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-20": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4738,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-08-21": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4982,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-22": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4889,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-23": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5407,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-24": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-25": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4824,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-26": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 4666,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "加航": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "AC 313",
+        "price": 5081,
+        "source": "serpapi",
+        "stops": 1
+      },
+      "土耳其航空": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "TK 36",
+        "price": 6208,
+        "source": "serpapi",
+        "stops": 1
+      }
+    },
+    "2026-08-27": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 4982,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-28": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4889,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-08-29": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 3600,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Cathay Pacific": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6077,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-08-30": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 3852,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-08-31": {
+      "Air Canada, Cathay Pacific": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 4910,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Korean Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 4889,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6134,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-01": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5904,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6401,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-02": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5904,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6422,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-03": {
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5717,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-04": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6199,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Turkish Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6602,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-05": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6199,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6091,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-09-06": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 3917,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-07": {
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "WestJet, Korean Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5666,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-09-08": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5904,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 5897,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-09": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5861,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-10": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5717,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5882,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-11": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6487,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-12": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6048,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, JAL": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6199,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6062,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-13": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6084,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-14": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 5818,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-09-15": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5861,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-16": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "WestJet, Korean Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5666,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-09-17": {
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5717,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-18": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-19": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6048,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6077,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-09-20": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6098,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-21": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5767,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-22": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5904,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6084,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-23": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-24": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6048,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-25": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5962,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-26": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6091,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6192,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-27": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5861,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Turkish Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6156,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-28": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-09-29": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5904,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 5897,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-09-30": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5861,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 5926,
+        "source": "fast_flights",
+        "stops": 1
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-01": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6077,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-02": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6156,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-10-03": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6041,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-10-04": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6336,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6653,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-05": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 5818,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-06": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5767,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6098,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-07": {
+      "Air Canada, EVA Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 5803,
+        "source": "fast_flights",
+        "stops": 2
+      },
+      "WestJet, Philippine Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 3168,
+        "source": "fast_flights",
+        "stops": 2
+      }
+    },
+    "2026-10-08": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6098,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jeju Air": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6091,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-09": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6509,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Turkish Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 6473,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-10": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6077,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-10-11": {
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-12": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-14",
+        "flight_no": "",
+        "price": 5861,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, Jetstar": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 5911,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-13": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-15",
+        "flight_no": "",
+        "price": 6084,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6127,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-14": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 5918,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-16",
+        "flight_no": "",
+        "price": 6422,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-15": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-17",
+        "flight_no": "",
+        "price": 6120,
+        "source": "fast_flights",
+        "stops": 0
+      },
+      "Air Canada, United": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6134,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-16": {
+      "Air Canada": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-18",
+        "flight_no": "",
+        "price": 6422,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    },
+    "2026-10-17": {
+      "?": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-19",
+        "flight_no": "",
+        "price": 6199,
+        "source": "fast_flights",
+        "stops": 0
+      }
+    },
+    "2026-10-18": {
+      "Turkish Airlines": {
+        "currency": "CNY",
+        "fetch_date": "2026-07-20",
+        "flight_no": "",
+        "price": 6163,
+        "source": "fast_flights",
+        "stops": 1
+      }
+    }
+  },
+  "generated_at": "2026-07-20T12:29:54+08:00",
+  "latest_fetch_date": "2026-07-20",
+  "route": "yul-hkg",
+  "sources": [
+    "fast_flights",
+    "serpapi"
+  ]
+}
