@@ -407,5 +407,10 @@ class FastFlightsFetcher(FetcherAdapter):
 
 def _attr(obj, name):
     if isinstance(obj, dict):
-        return obj.get(name)
+        if name in obj:
+            return obj[name]
+        # 兼容 nested 字段查找
+        if "flight" in obj and isinstance(obj["flight"], dict):
+            return obj["flight"].get(name)
+        return None
     return getattr(obj, name, None)
