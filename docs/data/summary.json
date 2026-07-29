@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-29T00:03:28+08:00",
+  "generated_at": "2026-07-29T23:48:13+08:00",
   "meta": {
     "run_stats": {
-      "fetched_count": 128,
+      "fetched_count": 124,
       "routes_failed": 0,
       "routes_ok": 2,
       "routes_total": 2,
       "run_date": "2026-07-29"
     },
-    "serpapi_remaining_quota": 240
+    "serpapi_remaining_quota": 238
   },
   "routes": {
     "sha-urc-0919": {
@@ -125,28 +125,28 @@
         }
       },
       "headline": {
-        "airline": "春航",
+        "airline": "厦航",
         "airplane": "",
-        "arrive_time": "22:50",
+        "arrive_time": "12:55",
         "baggage_note": "",
         "depart_date": "2026-10-03",
-        "depart_time": "16:00",
-        "flight_no": "9C 8846",
+        "depart_time": "08:15",
+        "flight_no": "MF 2368",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
         "price": 1800,
         "segments": [
           {
-            "airline": "春航",
+            "airline": "厦航",
             "airplane": "",
-            "duration_min": 410,
-            "flight_no": "9C 8846",
+            "duration_min": 280,
+            "flight_no": "MF 2368",
             "from": "URC",
-            "from_time": "2026-10-03 16:00",
+            "from_time": "2026-10-03 08:15",
             "leg": 1,
             "to": "SHA",
-            "to_time": "2026-10-03 22:50"
+            "to_time": "2026-10-03 12:55"
           }
         ],
         "source": "serpapi",
