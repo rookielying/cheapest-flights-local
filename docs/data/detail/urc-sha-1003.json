@@ -3,9 +3,9 @@
     "2026-10-03": {
       "?": {
         "currency": "CNY",
-        "fetch_date": "2026-07-27",
+        "fetch_date": "2026-08-01",
         "flight_no": "",
-        "price": 1800,
+        "price": 1562,
         "source": "fast_flights",
         "stops": 0
       },
@@ -19,8 +19,8 @@
       }
     }
   },
-  "generated_at": "2026-07-30T23:50:48+08:00",
-  "latest_fetch_date": "2026-07-30",
+  "generated_at": "2026-08-01T00:01:00+08:00",
+  "latest_fetch_date": "2026-08-01",
   "route": "urc-sha-1003",
   "sources": [
     "fast_flights"

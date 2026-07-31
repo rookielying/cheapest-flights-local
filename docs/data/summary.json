@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-30T23:50:20+08:00",
+  "generated_at": "2026-08-01T00:00:36+08:00",
   "meta": {
     "run_stats": {
-      "fetched_count": 124,
+      "fetched_count": 132,
       "routes_failed": 0,
       "routes_ok": 2,
       "routes_total": 2,
-      "run_date": "2026-07-30"
+      "run_date": "2026-07-31"
     },
-    "serpapi_remaining_quota": 236
+    "serpapi_remaining_quota": 240
   },
   "routes": {
     "sha-urc-0919": {
@@ -29,7 +29,7 @@
             "arr_time": "15:15",
             "currency": "CNY",
             "depart_time": "10:00",
-            "fetch_date": "2026-07-30",
+            "fetch_date": "2026-08-01",
             "flight_no": "",
             "has_baggage": true,
             "price": 1109
@@ -53,6 +53,11 @@
             {
               "currency": "CNY",
               "fetch_date": "2026-07-30",
+              "price": 1109
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-01",
               "price": 1109
             }
           ]
@@ -101,14 +106,14 @@
             "price": 1555
           },
           "latest": {
-            "airline": "Spring",
-            "arr_time": "22:50",
+            "airline": "",
+            "arr_time": "",
             "currency": "CNY",
-            "depart_time": "16:00",
-            "fetch_date": "2026-07-30",
+            "depart_time": "",
+            "fetch_date": "2026-08-01",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1555
+            "price": 1562
           },
           "series": [
             {
@@ -130,6 +135,11 @@
               "currency": "CNY",
               "fetch_date": "2026-07-30",
               "price": 1555
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-01",
+              "price": 1562
             }
           ]
         }
@@ -145,7 +155,7 @@
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1555,
+        "price": 1562,
         "segments": [
           {
             "airline": "春航",
