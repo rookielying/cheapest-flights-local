@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-04T00:19:44+08:00",
+  "generated_at": "2026-08-05T00:09:40+08:00",
   "meta": {
     "run_stats": {
-      "fetched_count": 130,
+      "fetched_count": 110,
       "routes_failed": 0,
       "routes_ok": 2,
       "routes_total": 2,
-      "run_date": "2026-08-04"
+      "run_date": "2026-08-05"
     },
-    "serpapi_remaining_quota": 234
+    "serpapi_remaining_quota": 232
   },
   "routes": {
     "sha-urc-0919": {
@@ -25,14 +25,14 @@
             "price": 1109
           },
           "latest": {
-            "airline": "",
-            "arr_time": "",
+            "airline": "Shandong",
+            "arr_time": "20:25",
             "currency": "CNY",
-            "depart_time": "",
-            "fetch_date": "2026-08-04",
+            "depart_time": "10:45",
+            "fetch_date": "2026-08-05",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1116
+            "price": 4522
           },
           "series": [
             {
@@ -69,33 +69,38 @@
               "currency": "CNY",
               "fetch_date": "2026-08-04",
               "price": 1116
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-05",
+              "price": 4522
             }
           ]
         }
       },
       "headline": {
-        "airline": "春航",
-        "airplane": "Airbus A320",
-        "arrive_time": "15:15",
+        "airline": "南航",
+        "airplane": "Airbus A321neo",
+        "arrive_time": "14:25",
         "baggage_note": "",
         "depart_date": "2026-09-19",
-        "depart_time": "10:00",
-        "flight_no": "9C 6495",
+        "depart_time": "09:00",
+        "flight_no": "CZ 6998",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1116,
+        "price": 4522,
         "segments": [
           {
-            "airline": "春航",
-            "airplane": "Airbus A320",
-            "duration_min": 315,
-            "flight_no": "9C 6495",
+            "airline": "南航",
+            "airplane": "Airbus A321neo",
+            "duration_min": 325,
+            "flight_no": "CZ 6998",
             "from": "SHA",
-            "from_time": "2026-09-19 10:00",
+            "from_time": "2026-09-19 09:00",
             "leg": 1,
             "to": "URC",
-            "to_time": "2026-09-19 15:15"
+            "to_time": "2026-09-19 14:25"
           }
         ],
         "source": "serpapi",
@@ -116,14 +121,14 @@
             "price": 1555
           },
           "latest": {
-            "airline": "Spring",
-            "arr_time": "21:30",
+            "airline": "Shandong",
+            "arr_time": "09:40",
             "currency": "CNY",
-            "depart_time": "16:30",
-            "fetch_date": "2026-08-04",
+            "depart_time": "19:00",
+            "fetch_date": "2026-08-05",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1584
+            "price": 4399
           },
           "series": [
             {
@@ -160,33 +165,38 @@
               "currency": "CNY",
               "fetch_date": "2026-08-04",
               "price": 1584
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-05",
+              "price": 4399
             }
           ]
         }
       },
       "headline": {
-        "airline": "春航",
-        "airplane": "",
-        "arrive_time": "22:50",
+        "airline": "南航",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "arrive_time": "12:55",
         "baggage_note": "",
         "depart_date": "2026-10-03",
-        "depart_time": "16:00",
-        "flight_no": "9C 8846",
+        "depart_time": "08:15",
+        "flight_no": "CZ 6993",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1584,
+        "price": 4399,
         "segments": [
           {
-            "airline": "春航",
-            "airplane": "",
-            "duration_min": 410,
-            "flight_no": "9C 8846",
+            "airline": "南航",
+            "airplane": "Boeing 737MAX 8 Passenger",
+            "duration_min": 280,
+            "flight_no": "CZ 6993",
             "from": "URC",
-            "from_time": "2026-10-03 16:00",
+            "from_time": "2026-10-03 08:15",
             "leg": 1,
             "to": "SHA",
-            "to_time": "2026-10-03 22:50"
+            "to_time": "2026-10-03 12:55"
           }
         ],
         "source": "serpapi",
