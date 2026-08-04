@@ -23,7 +23,7 @@
       },
       "airlines": {
         "whitelist": [],
-        "blacklist": ["春秋航空","Spring Airlines","9C"]
+        "blacklist": ["春秋航空","Spring Airlines","9C","Spring"]
       },
       "target_price": 1770.0,
       "drop_alert_pct": 0.10,
@@ -54,7 +54,7 @@
         "blacklist": [
           "春秋航空",
           "Spring Airlines",
-          "9C"
+          "9C","Spring"
         ]
       },
       "target_price": 1742.0,
