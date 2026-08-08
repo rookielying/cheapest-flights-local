@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-07T22:49:30+08:00",
+  "generated_at": "2026-08-08T22:27:38+08:00",
   "meta": {
     "run_stats": {
-      "fetched_count": 122,
+      "fetched_count": 116,
       "routes_failed": 0,
       "routes_ok": 2,
       "routes_total": 2,
-      "run_date": "2026-08-07"
+      "run_date": "2026-08-08"
     },
-    "serpapi_remaining_quota": 226
+    "serpapi_remaining_quota": 224
   },
   "routes": {
     "sha-urc-0919": {
@@ -25,14 +25,14 @@
             "price": 1080
           },
           "latest": {
-            "airline": "",
-            "arr_time": "",
+            "airline": "Cathay Pacific",
+            "arr_time": "07:00",
             "currency": "CNY",
-            "depart_time": "",
-            "fetch_date": "2026-08-07",
+            "depart_time": "13:20",
+            "fetch_date": "2026-08-08",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1080
+            "price": 3996
           },
           "series": [
             {
@@ -79,33 +79,38 @@
               "currency": "CNY",
               "fetch_date": "2026-08-07",
               "price": 1080
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-08",
+              "price": 3996
             }
           ]
         }
       },
       "headline": {
-        "airline": "春航",
-        "airplane": "Airbus A320",
-        "arrive_time": "15:20",
+        "airline": "南航",
+        "airplane": "Airbus A321neo",
+        "arrive_time": "14:25",
         "baggage_note": "",
         "depart_date": "2026-09-19",
-        "depart_time": "10:00",
-        "flight_no": "9C 6495",
+        "depart_time": "09:00",
+        "flight_no": "CZ 6998",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1080,
+        "price": 3996,
         "segments": [
           {
-            "airline": "春航",
-            "airplane": "Airbus A320",
-            "duration_min": 320,
-            "flight_no": "9C 6495",
+            "airline": "南航",
+            "airplane": "Airbus A321neo",
+            "duration_min": 325,
+            "flight_no": "CZ 6998",
             "from": "SHA",
-            "from_time": "2026-09-19 10:00",
+            "from_time": "2026-09-19 09:00",
             "leg": 1,
             "to": "URC",
-            "to_time": "2026-09-19 15:20"
+            "to_time": "2026-09-19 14:25"
           }
         ],
         "source": "serpapi",
@@ -130,7 +135,7 @@
             "arr_time": "09:40",
             "currency": "CNY",
             "depart_time": "19:30",
-            "fetch_date": "2026-08-07",
+            "fetch_date": "2026-08-08",
             "flight_no": "",
             "has_baggage": true,
             "price": 4399
@@ -179,6 +184,11 @@
             {
               "currency": "CNY",
               "fetch_date": "2026-08-07",
+              "price": 4399
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-08",
               "price": 4399
             }
           ]

@@ -9,6 +9,14 @@
         "source": "fast_flights",
         "stops": 0
       },
+      "Cathay Pacific": {
+        "currency": "CNY",
+        "fetch_date": "2026-08-08",
+        "flight_no": "",
+        "price": 3996,
+        "source": "fast_flights",
+        "stops": 1
+      },
       "Shandong": {
         "currency": "CNY",
         "fetch_date": "2026-08-05",
@@ -27,8 +35,8 @@
       }
     }
   },
-  "generated_at": "2026-08-07T22:49:50+08:00",
-  "latest_fetch_date": "2026-08-07",
+  "generated_at": "2026-08-08T22:27:54+08:00",
+  "latest_fetch_date": "2026-08-08",
   "route": "sha-urc-0919",
   "sources": [
     "fast_flights"
