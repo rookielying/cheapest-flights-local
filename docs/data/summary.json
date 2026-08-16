@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-15T22:17:07+08:00",
+  "generated_at": "2026-08-16T22:17:31+08:00",
   "meta": {
     "run_stats": {
       "fetched_count": 116,
       "routes_failed": 0,
       "routes_ok": 2,
       "routes_total": 2,
-      "run_date": "2026-08-15"
+      "run_date": "2026-08-16"
     },
-    "serpapi_remaining_quota": 210
+    "serpapi_remaining_quota": 208
   },
   "routes": {
     "sha-urc-0919": {
@@ -29,10 +29,10 @@
             "arr_time": "",
             "currency": "CNY",
             "depart_time": "",
-            "fetch_date": "2026-08-15",
+            "fetch_date": "2026-08-16",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1080
+            "price": 1318
           },
           "series": [
             {
@@ -119,33 +119,38 @@
               "currency": "CNY",
               "fetch_date": "2026-08-15",
               "price": 1080
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-16",
+              "price": 1318
             }
           ]
         }
       },
       "headline": {
         "airline": "春航",
-        "airplane": "Airbus A321",
-        "arrive_time": "18:00",
+        "airplane": "Airbus A320",
+        "arrive_time": "15:20",
         "baggage_note": "",
         "depart_date": "2026-09-19",
-        "depart_time": "12:35",
-        "flight_no": "9C 8865",
+        "depart_time": "10:00",
+        "flight_no": "9C 6495",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1080,
+        "price": 1318,
         "segments": [
           {
             "airline": "春航",
-            "airplane": "Airbus A321",
-            "duration_min": 325,
-            "flight_no": "9C 8865",
+            "airplane": "Airbus A320",
+            "duration_min": 320,
+            "flight_no": "9C 6495",
             "from": "SHA",
-            "from_time": "2026-09-19 12:35",
+            "from_time": "2026-09-19 10:00",
             "leg": 1,
             "to": "URC",
-            "to_time": "2026-09-19 18:00"
+            "to_time": "2026-09-19 15:20"
           }
         ],
         "source": "serpapi",
@@ -166,14 +171,14 @@
             "price": 1555
           },
           "latest": {
-            "airline": "",
-            "arr_time": "",
+            "airline": "Shandong",
+            "arr_time": "09:40",
             "currency": "CNY",
-            "depart_time": "",
-            "fetch_date": "2026-08-15",
+            "depart_time": "19:30",
+            "fetch_date": "2026-08-16",
             "flight_no": "",
             "has_baggage": true,
-            "price": 1692
+            "price": 4399
           },
           "series": [
             {
@@ -260,33 +265,38 @@
               "currency": "CNY",
               "fetch_date": "2026-08-15",
               "price": 1692
+            },
+            {
+              "currency": "CNY",
+              "fetch_date": "2026-08-16",
+              "price": 4399
             }
           ]
         }
       },
       "headline": {
-        "airline": "春航",
-        "airplane": "Airbus A321",
-        "arrive_time": "23:55",
+        "airline": "南航",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "arrive_time": "12:55",
         "baggage_note": "",
         "depart_date": "2026-10-03",
-        "depart_time": "19:20",
-        "flight_no": "9C 8866",
+        "depart_time": "08:15",
+        "flight_no": "CZ 6993",
         "layover_airports": [],
         "layovers": [],
         "overnight": false,
-        "price": 1692,
+        "price": 4399,
         "segments": [
           {
-            "airline": "春航",
-            "airplane": "Airbus A321",
-            "duration_min": 275,
-            "flight_no": "9C 8866",
+            "airline": "南航",
+            "airplane": "Boeing 737MAX 8 Passenger",
+            "duration_min": 280,
+            "flight_no": "CZ 6993",
             "from": "URC",
-            "from_time": "2026-10-03 19:20",
+            "from_time": "2026-10-03 08:15",
             "leg": 1,
             "to": "SHA",
-            "to_time": "2026-10-03 23:55"
+            "to_time": "2026-10-03 12:55"
           }
         ],
         "source": "serpapi",
